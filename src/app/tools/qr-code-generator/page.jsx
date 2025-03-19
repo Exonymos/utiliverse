@@ -4,7 +4,6 @@ import React, { useState, useRef, useEffect } from "react";
 import QRCode from "react-qr-code";
 import { FiCopy, FiShare2, FiCheck, FiChevronDown } from "react-icons/fi";
 import { motion } from "framer-motion";
-import domtoimage from "dom-to-image";
 import UsageModal from "../../../components/UsageModal";
 import toolsData from "../../../data/tools.json";
 import useLocalStorage from "../../../hooks/useLocalStorage";
@@ -90,8 +89,17 @@ export default function QRCodeGeneratorPage() {
   const exportQRCodeAsPNG = async () => {
     if (!qrRef.current) return null;
     try {
-      const dataUrl = await domtoimage.toPng(qrRef.current);
-      return dataUrl;
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+      const svg = qrRef.current.querySelector("svg");
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const img = new Image();
+      img.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
+      await new Promise((resolve) => (img.onload = resolve));
+      canvas.width = svg.clientWidth;
+      canvas.height = svg.clientHeight;
+      context.drawImage(img, 0, 0);
+      return canvas.toDataURL("image/png");
     } catch (error) {
       console.error("Error converting to PNG", error);
       return null;
@@ -105,13 +113,19 @@ export default function QRCodeGeneratorPage() {
       const link = document.createElement("a");
       link.href = dataUrl;
       link.download = "qr-code.png";
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
       showToast("PNG downloaded!");
     }
   };
 
   // Function to copy QR code image to clipboard
   const copyQRCode = async () => {
+    if (!navigator.clipboard || !navigator.clipboard.write) {
+      showToast("Image copy not supported on this device.");
+      return;
+    }
     const dataUrl = await exportQRCodeAsPNG();
     if (dataUrl) {
       try {
@@ -136,18 +150,19 @@ export default function QRCodeGeneratorPage() {
         const res = await fetch(dataUrl);
         const blob = await res.blob();
         const file = new File([blob], "qr-code.png", { type: "image/png" });
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          await navigator.share({
-            files: [file],
-            title: "QR Code",
-            text: "Here is your QR code.",
-          });
-          showToast("Shared!");
-        } else {
-          showToast("Sharing not supported.");
+        if (!(navigator.canShare && navigator.canShare({ files: [file] }))) {
+          showToast("Sharing not supported on this device.");
+          return;
         }
+        await navigator.share({
+          files: [file],
+          title: "QR Code",
+          text: "Here is your QR code.",
+        });
+        showToast("Shared!");
       } catch (error) {
         console.error("Share failed", error);
+        showToast("Share failed.");
       }
     }
   };
@@ -321,17 +336,17 @@ export default function QRCodeGeneratorPage() {
                     <div className="flex flex-col md:flex-row gap-4 w-full">
                       <motion.button
                         whileHover={{ x: 5 }}
-                        className="btn btn-secondary flex-1"
+                        className="btn btn-secondary w-full md:flex-1 h-10 md:h-10"
                         onClick={copyQRCode}
                       >
                         Copy Image <FiCopy />
                       </motion.button>
                       <motion.button
                         whileHover={{ x: 5 }}
-                        className="btn btn-accent flex-1"
+                        className="btn btn-accent w-full md:flex-1 h-10 md:h-10"
                         onClick={shareQRCode}
                       >
-                        Share <FiShare2 className="ml-2" />
+                        Share <FiShare2 />
                       </motion.button>
                     </div>
                   </div>
