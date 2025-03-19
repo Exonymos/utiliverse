@@ -20,6 +20,7 @@ export default function QRCodeGeneratorPage() {
   const qrRef = useRef(null);
   const tool = toolsData.find((t) => t.id === "qr-code-generator");
 
+  // Auto-generate QR code when input changes
   useEffect(() => {
     if (autoGenerate) {
       const handler = setTimeout(() => {
@@ -29,10 +30,12 @@ export default function QRCodeGeneratorPage() {
     }
   }, [inputText, autoGenerate]);
 
+  // Generate QR code based on input text
   const generateQRCode = () => {
     setQRValue(inputText);
   };
 
+  // Reset all input
   const resetFields = () => {
     setInputText("");
     setQRValue("");
@@ -41,6 +44,7 @@ export default function QRCodeGeneratorPage() {
     setQrSize(128);
   };
 
+  // Copy input text to clipboard
   const copyInputText = async () => {
     try {
       await navigator.clipboard.writeText(inputText);
@@ -50,6 +54,7 @@ export default function QRCodeGeneratorPage() {
     }
   };
 
+  // Download QR code as SVG
   const downloadQRCodeSVG = () => {
     if (qrRef.current) {
       const svg = qrRef.current.querySelector("svg");
@@ -70,6 +75,7 @@ export default function QRCodeGeneratorPage() {
     }
   };
 
+  // Export QR code as PNG
   const exportQRCodeAsPNG = async () => {
     if (!qrRef.current) return null;
     try {
@@ -89,6 +95,7 @@ export default function QRCodeGeneratorPage() {
     }
   };
 
+  // Download QR code as PNG
   const downloadQRCode = async () => {
     const dataUrl = await exportQRCodeAsPNG();
     if (dataUrl) {
@@ -102,6 +109,7 @@ export default function QRCodeGeneratorPage() {
     }
   };
 
+  // Copy QR code image to clipboard
   const copyQRCode = async () => {
     if (!navigator.clipboard || !navigator.clipboard.write) {
       showToast("Image copy not supported on this device.");
@@ -122,6 +130,7 @@ export default function QRCodeGeneratorPage() {
     }
   };
 
+  // Share QR code image
   const shareQRCode = async () => {
     const dataUrl = await exportQRCodeAsPNG();
     if (dataUrl) {
@@ -145,11 +154,13 @@ export default function QRCodeGeneratorPage() {
     }
   };
 
+  // Show temporary toast message
   const showToast = (msg) => {
     setToastMsg(msg);
     setTimeout(() => setToastMsg(""), 1500);
   };
 
+  // Usage instructions
   const usageInstructions = (
     <div>
       <p>To generate a QR code:</p>
@@ -180,6 +191,7 @@ export default function QRCodeGeneratorPage() {
       closeUsageModal={() => setIsUsageModalOpen(false)}
       usageInstructions={usageInstructions}
     >
+      {/* Input text */}
       <div className="form-control mb-4">
         <label className="label">
           <span className="label-text">Enter text or URL:</span>
@@ -192,6 +204,7 @@ export default function QRCodeGeneratorPage() {
           onChange={(e) => setInputText(e.target.value)}
         />
       </div>
+      {/* Controls */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-4">
         <label className="cursor-pointer label">
           <span className="label-text">Auto Generate</span>
@@ -305,6 +318,7 @@ export default function QRCodeGeneratorPage() {
           </div>
         </div>
       )}
+      {/* Toast message */}
       {toastMsg && (
         <div className="toast toast-center">
           <div className="alert alert-info">{toastMsg}</div>

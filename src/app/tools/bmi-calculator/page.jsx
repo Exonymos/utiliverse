@@ -15,6 +15,7 @@ export default function BMICalculatorPage() {
   const [isUsageModalOpen, setIsUsageModalOpen] = useState(false);
   const tool = toolsData.find((t) => t.id === "bmi-calculator");
 
+  // Calculate BMI based on weight and height
   const calculateBMI = () => {
     if (!weight || !height) return;
     let bmiVal = 0;
@@ -27,12 +28,14 @@ export default function BMICalculatorPage() {
     setBmi(bmiVal.toFixed(2));
   };
 
+  // Reset all input
   const resetFields = () => {
     setWeight("");
     setHeight("");
     setBmi(null);
   };
 
+  // Get BMI category based on BMI value
   const getBMICategory = (bmiVal) => {
     const bmiNum = parseFloat(bmiVal);
     if (bmiNum < 18.5) return "Underweight";
@@ -41,6 +44,7 @@ export default function BMICalculatorPage() {
     return "Obese";
   };
 
+  // Usage instructions
   const usageInstructions = (
     <div>
       <p>To calculate your BMI:</p>
@@ -63,6 +67,7 @@ export default function BMICalculatorPage() {
       closeUsageModal={() => setIsUsageModalOpen(false)}
       usageInstructions={usageInstructions}
     >
+      {/* Unit selection */}
       <div className="flex justify-center gap-4 mb-4">
         <button
           onClick={() => setUnit("metric")}
@@ -79,6 +84,7 @@ export default function BMICalculatorPage() {
           Imperial
         </button>
       </div>
+      {/* Weight and Height input */}
       <div className="form-control mb-4">
         <label className="label">
           <span className="label-text">
@@ -107,6 +113,7 @@ export default function BMICalculatorPage() {
           placeholder="Enter height"
         />
       </div>
+      {/* Calculate BMI button */}
       <motion.button
         whileHover={{ scale: 1.02 }}
         className="btn btn-primary mb-4"
@@ -122,6 +129,7 @@ export default function BMICalculatorPage() {
           </p>
         </div>
       )}
+      {/* Reset button */}
       <div className="flex justify-center mt-4">
         <button className="btn btn-outline w-full" onClick={resetFields}>
           Reset

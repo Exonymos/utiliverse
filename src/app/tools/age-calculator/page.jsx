@@ -21,6 +21,7 @@ export default function AgeCalculatorPage() {
   const [isUsageModalOpen, setIsUsageModalOpen] = useState(false);
   const tool = toolsData.find((t) => t.id === "age-calculator");
 
+  // Calculate user age
   const calculateAge = () => {
     if (!birthDate) return;
     const birth = new Date(birthDate);
@@ -39,10 +40,12 @@ export default function AgeCalculatorPage() {
     }
     setAgeResult({ years, months, days });
 
+    // Calculate total days lived
     const diffMs = now - birth;
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
     setTotalDays(diffDays);
 
+    // Calculate days until next b'day
     let nextBday = new Date(
       now.getFullYear(),
       birth.getMonth(),
@@ -62,6 +65,7 @@ export default function AgeCalculatorPage() {
     setZodiacSign(getZodiacSign(birth));
   };
 
+  // Calculate age on a future date
   const calculateFutureAge = () => {
     if (!birthDate || !futureDate) return;
     const birth = new Date(birthDate);
@@ -81,6 +85,7 @@ export default function AgeCalculatorPage() {
     setFutureAge({ years, months, days });
   };
 
+  // Get zodiac sign based on birth date
   const getZodiacSign = (date) => {
     const day = date.getDate();
     const month = date.getMonth() + 1;
@@ -110,6 +115,7 @@ export default function AgeCalculatorPage() {
     return "";
   };
 
+  // Reset all input
   const resetFields = () => {
     setBirthDate("");
     setAgeResult(null);
@@ -120,6 +126,7 @@ export default function AgeCalculatorPage() {
     setFutureAge(null);
   };
 
+  // Provide a future prediction
   const futurePrediction = () => {
     if (!birthDate) return "";
     const birth = new Date(birthDate);
@@ -130,6 +137,7 @@ export default function AgeCalculatorPage() {
     return `In ≈10 years, you will have lived ${diffDays.toLocaleString()} days.`;
   };
 
+  // Usage instructions
   const usageInstructions = (
     <div>
       <p>To calculate your age:</p>
@@ -158,6 +166,7 @@ export default function AgeCalculatorPage() {
       closeUsageModal={() => setIsUsageModalOpen(false)}
       usageInstructions={usageInstructions}
     >
+      {/* Input fields */}
       <div className="form-control mb-4">
         <label className="label">
           <span className="label-text">Enter your birth date:</span>
@@ -169,6 +178,7 @@ export default function AgeCalculatorPage() {
           onChange={(e) => setBirthDate(e.target.value)}
         />
       </div>
+      {/* Calculate age button */}
       <motion.button
         whileHover={{ scale: 1.02 }}
         className="btn btn-primary mb-4"
@@ -201,6 +211,7 @@ export default function AgeCalculatorPage() {
               </p>
             )}
           </div>
+          {/* Collapsible sections */}
           <div className="mt-4 space-y-2">
             <div
               tabIndex={0}
@@ -269,6 +280,7 @@ export default function AgeCalculatorPage() {
                 )}
               </div>
             </div>
+            {/* Reset button */}
             <div className="flex justify-center">
               <motion.button
                 whileHover={{ scale: 1.02 }}
