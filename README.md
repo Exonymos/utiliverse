@@ -1,6 +1,6 @@
 <div align="center">
 
-# UtiliVerse
+# [UtiliVerse](https://utili-verse.vercel.app/)
 
 A one-stop website that brings together a variety of easy-to-use tools for everyday tasks. With its clean, intuitive design, UtiliVerse makes getting things done simple and stress-free for everyone. Built using [Next.js](https://nextjs.org/) and [daisyUI](https://daisyui.com/).
 
