@@ -1,0 +1,29 @@
+[
+  {
+    "id": "age-calculator",
+    "title": "Age Calculator",
+    "description": "Calculate your exact age and discover fun details like days lived, next birthday countdown, and zodiac sign.",
+    "dateCreated": "2025-03-17",
+    "author": "Exonymos",
+    "tags": ["age", "calculator"],
+    "source": "https://github.com/Exonymos/utiliverse/blob/main/src/app/tools/age-calculator"
+  },
+  {
+    "id": "bmi-calculator",
+    "title": "BMI Calculator",
+    "description": "Determine your Body Mass Index (BMI) using metric or imperial units and get a quick health category.",
+    "dateCreated": "2025-03-19",
+    "author": "Exonymos",
+    "tags": ["bmi", "health", "calculator"],
+    "source": "https://github.com/Exonymos/utiliverse/blob/main/src/app/tools/bmi-calculator"
+  },
+  {
+    "id": "qr-code-generator",
+    "title": "QR Code Generator",
+    "description": "Quickly generate customizable QR codes for any link or data.",
+    "dateCreated": "2025-03-18",
+    "author": "Exonymos",
+    "tags": ["qr", "code", "generator"],
+    "source": "https://github.com/Exonymos/utiliverse/blob/main/src/app/tools/qr-code-generator"
+  }
+]
