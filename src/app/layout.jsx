@@ -1,5 +1,6 @@
 // src/app/layout.jsx
 import "../app/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main className="flex-grow container mx-auto p-4">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
