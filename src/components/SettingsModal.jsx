@@ -47,12 +47,12 @@ export default function SettingsModal({ onClose }) {
     setTimeout(() => setFeedback(""), 1500);
   };
 
-  // Clear all tool cache
-  const clearCache = () => {
+  // Clear all tool cookies
+  const clearCookies = () => {
     Object.keys(localStorage).forEach((key) => {
       if (key.startsWith("tool_")) localStorage.removeItem(key);
     });
-    setFeedback("Cache cleared!");
+    setFeedback("Cookies cleared!");
     setTimeout(() => setFeedback(""), 1500);
   };
 
@@ -101,10 +101,10 @@ export default function SettingsModal({ onClose }) {
               </optgroup>
             </select>
           </div>
-          {/* Buttons for clearing cache and closing modal */}
+          {/* Buttons for clearing cookies and closing modal */}
           <div className="flex gap-4 mb-4 justify-between">
-            <button onClick={clearCache} className="btn btn-secondary">
-              Clear All Tool Cache
+            <button onClick={clearCookies} className="btn btn-secondary">
+              Clear All Tool Cookies
             </button>
             <button onClick={onClose} className="btn btn-primary">
               Close

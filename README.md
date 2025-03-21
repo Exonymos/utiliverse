@@ -19,6 +19,7 @@ A one-stop website that brings together a variety of easy-to-use tools for every
   - [Table of Contents](#table-of-contents)
   - [About](#about)
   - [Features](#features)
+  - [Tools Available](#tools-available)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
@@ -34,21 +35,32 @@ UtiliVerse is your one-stop website that brings together a collection of simple,
 
 ## Features
 
-- **Age Calculator:**
-  - Calculates your age in years, months, and days.
-  - Displays total days lived, days until your next birthday, zodiac sign, and a fun future prediction.
-- **BMI Calculator:**
-  - Supports both metric and imperial units.
-  - Provides your Body Mass Index (BMI) along with the corresponding health category.
-- **QR Code Generator:**
-  - Generate QR codes from text or URLs.
-  - Customize QR code size, foreground, and background colors.
-  - Download generated QR codes as PNG or SVG; copy or share them directly.
 - **Tool Search & Listing:**
   - Fuzzy search functionality to quickly find the tool you need.
   - Clean and responsive layout built with Next.js and TailwindCSS.
 - **Theme Toggle:**
   - Seamless switching between multiple themes (e.g., light and dark) powered by daisyUI.
+- **Clear cookies:**
+  - Option to clear the cookies of all tools with a single click.
+- **Responsive Design:**
+  - Fully responsive design that works on all devices.
+- **Open Source:**
+  - UtiliVerse is open-source and available for contributions.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Tools Available
+
+- **Age Calculator:**
+  - Calculate your age based on the date of birth.
+- **BMI Calculator:**
+  - Calculate your Body Mass Index (BMI) based on your weight and height.
+- **QR Code Generator:**
+  - Generate a customizable QR code for any text or URL.
+- **Unit Converter:**
+  - Convert between various units of measurement (e.g., length, weight, temperature, etc.).
+
+More tools will be added in the future. Stay tuned!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -64,28 +76,36 @@ Follow these steps to set up a local copy of UtiliVerse.
 ### Installation
 
 1. **Clone the repository:**
-  ```sh
-  git clone https://github.com/Exonymos/utiliverse.git
-  ```
+
+```sh
+git clone https://github.com/Exonymos/utiliverse.git
+```
+
 2. **Navigate to the project directory:**
-  ```sh
-  cd utiliverse
-  ```
+
+```sh
+cd utiliverse
+```
+
 3. **Install dependencies:**
-  ```sh
-  pnpm install
-  ```
+
+```sh
+pnpm install
+```
 
 ### Usage
 
 1. **Start the development server:**
-  ```sh
-  pnpm dev
-  ```
+
+```sh
+pnpm dev
+```
+
 2. **Open your browser and visit:**
-  ```plaintext
-  http://localhost:3000
-  ```
+
+```plaintext
+http://localhost:3000
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
