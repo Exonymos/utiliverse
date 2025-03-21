@@ -25,6 +25,7 @@
 *.pem
 *.txt
 *.yaml
+/.vscode
 
 # debug
 npm-debug.log*
