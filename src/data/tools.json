@@ -3,7 +3,7 @@
     "id": "age-calculator",
     "title": "Age Calculator",
     "description": "Calculate your exact age and discover fun details like days lived, next birthday countdown, and zodiac sign.",
-    "dateCreated": "2025-03-17",
+    "dateCreated": "2025-03-19",
     "author": "Exonymos",
     "tags": ["age", "calculator"],
     "source": "https://github.com/Exonymos/utiliverse/blob/main/src/app/tools/age-calculator"
@@ -25,5 +25,14 @@
     "author": "Exonymos",
     "tags": ["qr", "code", "generator"],
     "source": "https://github.com/Exonymos/utiliverse/blob/main/src/app/tools/qr-code-generator"
+  },
+  {
+    "id": "unit-converter",
+    "title": "Unit Converter",
+    "description": "Convert between various units including length, weight, temperature, and more.",
+    "dateCreated": "2025-03-20",
+    "author": "Exonymos",
+    "tags": ["unit", "converter"],
+    "source": "https://github.com/Exonymos/utiliverse/blob/main/src/app/tools/unit-converter"
   }
 ]
