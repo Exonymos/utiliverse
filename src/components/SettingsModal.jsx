@@ -11,6 +11,7 @@ export default function SettingsModal({ onClose }) {
     { value: "emerald", label: "Emerald" },
     { value: "corporate", label: "Corporate" },
     { value: "retro", label: "Retro" },
+    { value: "valentine", label: "Valentine" },
     { value: "pastel", label: "Pastel" },
     { value: "nord", label: "Nord" },
   ];
@@ -20,6 +21,7 @@ export default function SettingsModal({ onClose }) {
     { value: "dracula", label: "Dracula" },
     { value: "business", label: "Business" },
     { value: "night", label: "Night" },
+    { value: "coffee", label: "Coffee" },
     { value: "dim", label: "Dim" },
     { value: "sunset", label: "Sunset" },
   ];
